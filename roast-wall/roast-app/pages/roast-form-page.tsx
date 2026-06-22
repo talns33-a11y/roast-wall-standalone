@@ -4,10 +4,10 @@ import { createRoast, CreateRoastInput } from '../api.js';
 import styles from '../styles.module.css';
 
 const TONES: { value: CreateRoastInput['tone']; label: string }[] = [
-  { value: 'dry', label: 'dry' },
-  { value: 'sharp', label: 'sharp' },
-  { value: 'gentle', label: 'gentle' },
-  { value: 'brutal-but-safe', label: 'brutal but safe' },
+  { value: 'dry', label: 'dry verdict' },
+  { value: 'sharp', label: 'sharp judgment' },
+  { value: 'gentle', label: 'lenient court' },
+  { value: 'brutal-but-safe', label: 'maximum sentence' },
 ];
 
 /**
@@ -49,12 +49,14 @@ export function RoastFormPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.sectionTitle}>Answer five questions 🔥</h1>
-      <p className={styles.sectionSub}>The AI will roast you — funny, sharp, and safe.</p>
+      <h1 className={styles.sectionTitle}>Present your testimony ⚖️</h1>
+      <p className={styles.sectionSub}>
+        The court is in session. Answer honestly — the AI will use your own words against you.
+      </p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.field}>
-          <label className={styles.label}>Name</label>
+          <label className={styles.label}>Your name — for the record</label>
           <input
             className={styles.input}
             value={form.name}
@@ -64,7 +66,7 @@ export function RoastFormPage() {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Age</label>
+          <label className={styles.label}>Age at time of offenses</label>
           <input
             className={styles.input}
             value={form.age}
@@ -75,7 +77,7 @@ export function RoastFormPage() {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Profession or hobby</label>
+          <label className={styles.label}>Profession or hobby (alleged)</label>
           <input
             className={styles.input}
             value={form.professionOrHobby}
@@ -85,7 +87,7 @@ export function RoastFormPage() {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>One thing you are proud of</label>
+          <label className={styles.label}>One thing you claim to be proud of</label>
           <textarea
             className={styles.textarea}
             value={form.proudOf}
@@ -95,7 +97,7 @@ export function RoastFormPage() {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>One ridiculous thing about you</label>
+          <label className={styles.label}>One incriminating fact about yourself</label>
           <textarea
             className={styles.textarea}
             value={form.ridiculousThing}
@@ -105,7 +107,7 @@ export function RoastFormPage() {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Tone</label>
+          <label className={styles.label}>Severity of judgment requested</label>
           <div className={styles.toneRow}>
             {TONES.map((t) => (
               <button
@@ -123,7 +125,7 @@ export function RoastFormPage() {
         {error && <div className={styles.error}>{error}</div>}
 
         <button type="submit" className={styles.ctaButton} disabled={submitting}>
-          {submitting ? 'Generating your roast…' : '🔥 Roast me'}
+          {submitting ? 'The court is deliberating…' : '⚖️ I plead guilty — begin the trial'}
         </button>
       </form>
     </div>

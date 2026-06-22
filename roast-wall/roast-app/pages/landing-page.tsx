@@ -1,56 +1,53 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles.module.css';
 
-/**
- * The landing page: headline, subheadline, placeholder payment CTA, and features.
- */
 export function LandingPage() {
   return (
     <div className={styles.container}>
       <section className={styles.hero}>
-        <span className={styles.badge}>🔥 The Million AI Roast Wall</span>
+        <span className={styles.badge}>⚖️ The Public AI Shame Trial</span>
         <h1 className={styles.headline}>
-          Get roasted by AI and claim your place on the Million AI Roast Wall.
+          Stand trial for your life choices.
         </h1>
         <p className={styles.subheadline}>
-          Pay $9, answer five questions, and get a funny personal AI roast certificate
-          with your own public serial number.
+          Present your testimony. The AI will deliberate.
+          A verdict will be issued. Your conviction becomes a matter of public record.
         </p>
-        {/* Placeholder payment button — replace href with Gumroad / Stripe / PayPal / Lemon Squeezy later. */}
+        {/* Placeholder payment CTA — swap Link href for real checkout URL when payment is live. */}
         <Link to="/roast" className={styles.ctaButton}>
-          💸 Pay $9 and get roasted
+          ⚖️ Submit yourself for judgment
         </Link>
         <p className={styles.payNote}>
-          Demo mode — no real payment yet. Button is ready to swap for a real checkout link.
+          Demo mode — no real payment yet. Trial is free while in session.
         </p>
 
         <div className={styles.featureGrid}>
           <div className={styles.featureCard}>
-            <div className={styles.featureEmoji}>📝</div>
-            <h3 className={styles.featureTitle}>Answer 5 questions</h3>
+            <div className={styles.featureEmoji}>📜</div>
+            <h3 className={styles.featureTitle}>Present your testimony</h3>
             <p className={styles.featureText}>
-              Tell us who you are. The funnier the truth, the better the roast.
+              Answer five questions. The court will use your own words against you.
             </p>
           </div>
           <div className={styles.featureCard}>
-            <div className={styles.featureEmoji}>🎓</div>
-            <h3 className={styles.featureTitle}>Get a certificate</h3>
+            <div className={styles.featureEmoji}>🔨</div>
+            <h3 className={styles.featureTitle}>Receive your verdict</h3>
             <p className={styles.featureText}>
-              A personal roast with a title, a hidden compliment, and a unique serial number.
+              An official charge, a sentence, and a hidden mercy clause — with your unique case number.
             </p>
           </div>
           <div className={styles.featureCard}>
             <div className={styles.featureEmoji}>🏛️</div>
-            <h3 className={styles.featureTitle}>Join the wall</h3>
+            <h3 className={styles.featureTitle}>Enter the public record</h3>
             <p className={styles.featureText}>
-              Every roast goes up on the public wall — a viral internet monument.
+              Every conviction is added to the Hall of the Convicted — a permanent public record.
             </p>
           </div>
         </div>
 
         <div style={{ marginTop: '2.5rem' }}>
-          <Link to="/wall" className={styles.secondaryButton} style={{ display: 'inline-block', maxWidth: 260 }}>
-            👀 See the public wall
+          <Link to="/wall" className={styles.secondaryButton} style={{ display: 'inline-block', maxWidth: 280 }}>
+            🏛️ See who&apos;s been convicted
           </Link>
         </div>
       </section>
