@@ -1,7 +1,9 @@
-# CLAUDE.md — Roast Wall Standalone
+# CLAUDE.md — AI Shame Trial (roast-wall-standalone)
 
 ## Project overview
-Full-stack roast/comment wall app. React frontend, Node/Express backend, MongoDB Atlas persistence. Deployed on Render.com.
+Full-stack AI Shame Trial app — users submit testimony, receive an AI verdict, and are added to the public "Hall of the Convicted". React frontend, Node/Express backend, MongoDB Atlas persistence. Deployed on Render.com.
+
+**Current brand:** AI Shame Trial / Public AI Trial (rebranded from "Roast Wall" in Phase 1, 2026-06-22)
 
 ## Do NOT do any of these
 - Touch Render config or redeploy
