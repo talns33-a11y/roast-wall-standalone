@@ -27,7 +27,7 @@ export function WallPage() {
       ) : roasts.length === 0 ? (
         <div className={styles.empty}>
           <p>No convictions yet. Be the first to stand trial.</p>
-          <Link to=”/roast” className={styles.ctaButton}>⚖️ Submit yourself for judgment</Link>
+          <Link to="/roast" className={styles.ctaButton}>⚖️ Submit yourself for judgment</Link>
         </div>
       ) : (
         <div className={styles.wallGrid}>
@@ -40,7 +40,7 @@ export function WallPage() {
             >
               <span className={styles.wallName}>{r.name}</span>
               <span className={styles.wallTitle}>CONVICTED: {r.title}</span>
-              <span className={styles.wallLine}>”{r.roastLine}”</span>
+              <span className={styles.wallLine}>&quot;{r.roastLine}&quot;</span>
               <span className={styles.wallSerial}>Case {r.serialLabel}</span>
             </Link>
           ))}

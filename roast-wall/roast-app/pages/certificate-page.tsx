@@ -36,18 +36,22 @@ export function CertificatePage() {
 
   const shareOnX = () => {
     if (!roast) return;
-    const text = encodeURIComponent(`${roast.socialCaption}`);
+    const text = encodeURIComponent(roast.socialCaption);
     const url = encodeURIComponent(window.location.href);
-    window.open(`https://x.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener,noreferrer');
+    window.open(
+      `https://x.com/intent/tweet?text=${text}&url=${url}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
-  if (loading) return <div className={styles.loading}>The court is deliberating…</div>;
+  if (loading) return <div className={styles.loading}>The court is deliberating...</div>;
   if (!roast)
     return (
       <div className={styles.container}>
         <div className={styles.empty}>
           <p>Verdict not found.</p>
-          <Link to=”/roast” className={styles.ctaButton}>Stand trial</Link>
+          <Link to="/roast" className={styles.ctaButton}>Stand trial</Link>
         </div>
       </div>
     );
@@ -59,10 +63,10 @@ export function CertificatePage() {
           <div className={styles.certSerial}>Case {roast.serialLabel}</div>
           <div className={styles.certName}>{roast.name}</div>
           <div className={styles.certTitle}>CONVICTED: {roast.title}</div>
-          <p className={styles.certLine}>”{roast.roastLine}”</p>
+          <p className={styles.certLine}>&quot;{roast.roastLine}&quot;</p>
           <div className={styles.certCompliment}>Mercy of the court: {roast.hiddenCompliment}</div>
           <div className={styles.certFooter}>
-            <span>AI Shame Trial — Official Verdict</span>
+            <span>AI Shame Trial &mdash; Official Verdict</span>
             <span>{new Date(roast.createdAt).toLocaleDateString()}</span>
           </div>
         </div>
@@ -73,16 +77,16 @@ export function CertificatePage() {
 
         <div className={styles.actionRow}>
           <button className={styles.secondaryButton} onClick={shareOnX}>
-            𝕏 Share on X
+            Share on X
           </button>
           <button className={styles.secondaryButton} onClick={copyCaption}>
-            {copiedCaption ? '✅ Copied!' : '📋 Copy sentence'}
+            {copiedCaption ? 'Copied!' : 'Copy sentence'}
           </button>
           <button className={styles.secondaryButton} onClick={copyLink}>
-            {copiedLink ? '✅ Copied!' : '🔗 Copy verdict link'}
+            {copiedLink ? 'Copied!' : 'Copy verdict link'}
           </button>
-          <Link to=”/wall” className={styles.secondaryButton}>🏛️ Hall of the Convicted</Link>
-          <Link to=”/roast” className={styles.secondaryButton}>🔁 Try again</Link>
+          <Link to="/wall" className={styles.secondaryButton}>Hall of the Convicted</Link>
+          <Link to="/roast" className={styles.secondaryButton}>Try again</Link>
         </div>
       </div>
     </div>
