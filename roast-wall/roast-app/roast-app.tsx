@@ -12,11 +12,11 @@ function Nav() {
   const location = useLocation();
   return (
     <nav className={styles.nav}>
-      <Link to="/" className={styles.brand}>🔥 Roast Wall</Link>
+      <Link to="/" className={styles.brand}>⚖️ AI Shame Trial</Link>
       <div className={styles.navLinks}>
-        <Link to="/wall" className={styles.navLink}>The Wall</Link>
+        <Link to="/wall" className={styles.navLink}>Hall of the Convicted</Link>
         {location.pathname !== '/roast' && (
-          <Link to="/roast" className={styles.navLink}>Get roasted</Link>
+          <Link to="/roast" className={styles.navLink}>Stand Trial</Link>
         )}
       </div>
     </nav>
@@ -37,7 +37,7 @@ export function RoastApp() {
         <Route path="/wall" element={<WallPage />} />
       </Routes>
       <footer className={styles.footer}>
-        The Million AI Roast Wall · All roasts are AI-generated, funny, and safe. No cruelty allowed.
+        AI Shame Trial · All verdicts are AI-generated, absurd, and safe. No real cruelty allowed.
       </footer>
     </div>
   );

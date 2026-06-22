@@ -3,15 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import { getRoast, RoastRecord } from '../api.js';
 import styles from '../styles.module.css';
 
-/**
- * The generated certificate result page. Loads a roast by id and renders the
- * certificate card with sharing actions.
- */
 export function CertificatePage() {
   const { id } = useParams<{ id: string }>();
   const [roast, setRoast] = useState<RoastRecord | null>(null);
   const [loading, setLoading] = useState(true);
-  const [copied, setCopied] = useState(false);
+  const [copiedCaption, setCopiedCaption] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -23,19 +20,38 @@ export function CertificatePage() {
 
   const copyCaption = () => {
     if (!roast) return;
-    navigator.clipboard?.writeText(`${roast.socialCaption}`).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+    const text = `${roast.socialCaption} ${window.location.href}`;
+    navigator.clipboard?.writeText(text).then(() => {
+      setCopiedCaption(true);
+      setTimeout(() => setCopiedCaption(false), 2000);
     });
   };
 
-  if (loading) return <div className={styles.loading}>Loading your certificate…</div>;
+  const copyLink = () => {
+    navigator.clipboard?.writeText(window.location.href).then(() => {
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    });
+  };
+
+  const shareOnX = () => {
+    if (!roast) return;
+    const text = encodeURIComponent(roast.socialCaption);
+    const url = encodeURIComponent(window.location.href);
+    window.open(
+      `https://x.com/intent/tweet?text=${text}&url=${url}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
+  if (loading) return <div className={styles.loading}>The court is deliberating...</div>;
   if (!roast)
     return (
       <div className={styles.container}>
         <div className={styles.empty}>
-          <p>Certificate not found.</p>
-          <Link to="/roast" className={styles.ctaButton}>Get roasted</Link>
+          <p>Verdict not found.</p>
+          <Link to="/roast" className={styles.ctaButton}>Stand trial</Link>
         </div>
       </div>
     );
@@ -44,27 +60,33 @@ export function CertificatePage() {
     <div className={styles.container}>
       <div className={styles.certWrap}>
         <div className={styles.certificate}>
-          <div className={styles.certSerial}>{roast.serialLabel}</div>
+          <div className={styles.certSerial}>Case {roast.serialLabel}</div>
           <div className={styles.certName}>{roast.name}</div>
-          <div className={styles.certTitle}>{roast.title}</div>
-          <p className={styles.certLine}>“{roast.roastLine}”</p>
-          <div className={styles.certCompliment}>{roast.hiddenCompliment}</div>
+          <div className={styles.certTitle}>CONVICTED: {roast.title}</div>
+          <p className={styles.certLine}>&quot;{roast.roastLine}&quot;</p>
+          <div className={styles.certCompliment}>Mercy of the court: {roast.hiddenCompliment}</div>
           <div className={styles.certFooter}>
-            <span>The Million AI Roast Wall</span>
+            <span>AI Shame Trial &mdash; Official Verdict</span>
             <span>{new Date(roast.createdAt).toLocaleDateString()}</span>
           </div>
         </div>
 
         <div className={styles.caption}>
-          <strong>Share caption:</strong> {roast.socialCaption}
+          <strong>Your sentence:</strong> {roast.socialCaption}
         </div>
 
         <div className={styles.actionRow}>
-          <button className={styles.secondaryButton} onClick={copyCaption}>
-            {copied ? '✅ Copied!' : '📋 Copy caption'}
+          <button className={styles.secondaryButton} onClick={shareOnX}>
+            Share on X
           </button>
-          <Link to="/wall" className={styles.secondaryButton}>🏛️ See the wall</Link>
-          <Link to="/roast" className={styles.secondaryButton}>🔁 Roast again</Link>
+          <button className={styles.secondaryButton} onClick={copyCaption}>
+            {copiedCaption ? 'Copied!' : 'Copy sentence'}
+          </button>
+          <button className={styles.secondaryButton} onClick={copyLink}>
+            {copiedLink ? 'Copied!' : 'Copy verdict link'}
+          </button>
+          <Link to="/wall" className={styles.secondaryButton}>Hall of the Convicted</Link>
+          <Link to="/roast" className={styles.secondaryButton}>Try again</Link>
         </div>
       </div>
     </div>
