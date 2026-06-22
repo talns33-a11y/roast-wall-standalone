@@ -8,6 +8,8 @@ Full-stack AI Shame Trial app — users submit testimony, receive an AI verdict,
 
 **Phase 2 complete (2026-06-22):** Generator content upgraded — all verdict titles, roast lines, compliments, and share captions now use AI court/conviction language with #AIShameTrial. Deployed at commit 5062d04.
 
+**Phase 3 complete (2026-06-23):** Viral sharing / summon friend loop live. Visitor CTA on certificate pages, summon a friend mechanic, `/?summoned_by=` landing behaviour, native Share button with fallback. Merged via PR #3, commit 93d7e21. Branch phase3-viral-sharing deleted after validation.
+
 ## Do NOT do any of these
 
 - Touch Render config or redeploy

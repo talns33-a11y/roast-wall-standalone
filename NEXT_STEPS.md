@@ -26,6 +26,16 @@ Confirm what you're changing and why. The app is live and stable — every chang
 - Existing records #000001–#000005 survived — no data loss
 - Branch phase2-generator-content deleted after merge
 
+### Phase 3 — Viral sharing / summon friend loop (merged 2026-06-23, PR #3, commit 93d7e21)
+
+- Visitor CTA on certificate pages prompts visitors to start their own trial
+- Summon a friend mechanic: users send a personalised challenge link
+- `/?summoned_by=Alex` landing behaviour: landing page shows custom summon message
+- Native Share / Share via button with safe fallback on unsupported browsers
+- Existing Phase 1 share buttons unchanged
+- Records #000001–#000006 survived — no data loss
+- Branch phase3-viral-sharing deleted after validation
+
 ## Suggested next work (in priority order)
 
 ### High value, low risk

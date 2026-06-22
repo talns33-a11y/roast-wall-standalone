@@ -11,6 +11,18 @@ As of 2026-06-22
 - Branch: viral-shame-trial-phase1 merged via PR #1, then deleted from GitHub
 - MongoDB records: #000001 and #000002 survived the deploy — no data loss
 
+## Phase 3 — Viral sharing / summon friend loop — LIVE IN PRODUCTION
+
+- Deployed commit: 93d7e21 (merged via PR #3, branch phase3-viral-sharing, deleted after validation)
+- Visitor CTA live on certificate pages — prompts visitors to start their own trial
+- Summon a friend mechanic live — users can send a personalised challenge link to a friend
+- `/?summoned_by=Alex` landing behaviour works — landing page shows custom summon message
+- Native Share / Share via button works; falls back safely on unsupported browsers
+- Existing Phase 1 share buttons (Share on X, Copy sentence, Copy verdict link) still present and unchanged
+- Existing records #000001–#000006 survived — no data loss
+- /health confirmed: status ok, database ready, storage mongo
+- Payment remains placeholder/demo only — no real payment processing wired
+
 ## Phase 2 — Generator content upgrade — LIVE IN PRODUCTION
 
 - Deployed commit: 5062d04 (merged via PR #2, branch phase2-generator-content, deleted after merge)
